@@ -1,9 +1,23 @@
-import React from 'react'
+import SideBar from "../../utils/reusable/SideBar";
+import TopNav from "../../utils/reusable/TopNav";
+import SavingsBody from "../../body/SavingsBody";
 
 const Savings = () => {
   return (
-    <div>Savings</div>
-  )
-}
+    <div
+      className="flex flex-row bg-white-100 h-screen overflow-x-auto"
+      style={{ backgroundColor: "#F8F8F9" }}
+    >
+      <div>
+        <SideBar />
+      </div>
 
-export default Savings
+      <div className="w-full h-full">
+        <TopNav />
+        <SavingsBody />
+      </div>
+    </div>
+  );
+};
+
+export default Savings;
