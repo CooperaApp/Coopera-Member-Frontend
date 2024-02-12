@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'EuclidCircularA';
+    src: url('../assets/fonts/Euclid Circular A Bold.ttf') format('truetype'),
+         url('../assets/fonts/Euclid Circular A Bold Italic.ttf') format('truetype'),
+         url('../assets/fonts/Euclid Circular A Italic.ttf') format('truetype'),
+         url('../assets/fonts/Euclid Circular A Light.ttf') format('truetype'),
+         url('../assets/fonts/Euclid Circular A Light Italic.ttf') format('truetype'),
+         url('../assets/fonts/Euclid Circular A Medium.ttf') format('truetype'),
+         url('../assets/fonts/Euclid Circular A Medium Italic.ttf') format('truetype'),
+         url('../assets/fonts/Euclid Circular A Regular.ttf') format('truetype'),
+         url('../assets/fonts/Euclid Circular A SemiBold.ttf') format('truetype'),
+         url('../assets/fonts/Euclid Circular A SemiBold Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }

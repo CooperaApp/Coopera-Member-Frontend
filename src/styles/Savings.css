@@ -1,0 +1,13 @@
+.total-savings-amount {
+    font-family: 'EuclidCircularA', sans-serif;
+    font-size: 37px;
+    font-weight: 600;
+    line-height: 58px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.total-savings {
+    font-size: 24px;
+}

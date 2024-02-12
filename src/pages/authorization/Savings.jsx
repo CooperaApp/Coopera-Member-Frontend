@@ -1,6 +1,6 @@
 import SideBar from "../../utils/reusable/SideBar";
 import TopNav from "../../utils/reusable/TopNav";
-import SavingsBody from "../../body/SavingsBody";
+import SavingsBody from "../body/SavingsBody";
 
 const Savings = () => {
   return (
