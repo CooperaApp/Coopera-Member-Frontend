@@ -1,0 +1,34 @@
+.card-title {
+    font-family: 'EuclidCircularA', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: left;
+ }
+
+ .card-amount {
+    font-family: 'EuclidCircularA', sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 37px;
+    letter-spacing: 0em;
+    text-align: left;
+ }
+
+ .previous-month-styling {
+    font-family: 'EuclidCircularA', sans-serif;
+    font-size: 12px;
+    font-weight: lighter;
+    line-height: 24px;
+    letter-spacing: 0em;
+ }
+
+ .percentage-figure {
+    font-family: 'EuclidCircularA', sans-serif;
+    font-size: 14px;
+    font-weight: lighter;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+ }

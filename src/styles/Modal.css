@@ -1,0 +1,112 @@
+.modal{
+    /*width: 743px;*/
+    /*height: 88px;*/
+    /*top: 1970px;*/
+    /*left: 4336px;*/
+    padding: 4px;
+    border-radius: 4px;
+    gap: 10px;
+    box-shadow: 2px 2px 0px 0.5px #0E0A2D;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.5); ; /* Semi-transparent black background */
+    backdrop-filter: blur(8px); /* Blur effect */
+}
+
+.reset-star{
+    width: 100px;
+    height: 100px;
+    padding: 25px;
+    background-color: #FFFFFF;
+    border-right: 1px solid #AFB0B1;
+    border-radius: 8px;
+}
+
+.reset-star img{
+    width: 50px;
+    height: 50px;
+    top: 55px;
+    left: 55px;
+
+}
+
+.modal-content{
+    width: 637px;
+    height: 100px;
+    gap: 10px;
+    display: flex;
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 10000;
+}
+
+.changed-password{
+    width: 189px;
+    height: 24px;
+    font-family: 'EuclidCircularA', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.proceed-after-password-change{
+    width: 349px;
+    height: 20px;
+    font-family: 'EuclidCircularA', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #747474;
+}
+
+.password-frame{
+    width: 499px;
+    height: 52px;
+    gap: 8px;
+
+}
+
+.close-icon-action{
+    margin-left: 105px;
+    margin-bottom: 5px;
+    width: 24px;
+    height: 24px;
+    padding: 0.69px;
+
+
+}
+
+.close-frame{
+    width: 120px;
+    height: 54px;
+    gap: 6px;
+
+}
+.proceed-to-login-on-close{
+    width: 138px;
+    height: 24px;
+    border-radius: 4px;
+    gap: 8px;
+    color: #6D5DD3;
+    margin-right: 10px;
+    margin-top: 5px;
+    font-family: 'EuclidCircularA', sans-serif;
+    font-size: 15px;
+    font-weight: 200;
+    line-height: 24px;
+}

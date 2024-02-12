@@ -2,7 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-
 @import '../styles/font.css';
 @import '../styles/Authentication.css';
 @import '../styles/Card.css';

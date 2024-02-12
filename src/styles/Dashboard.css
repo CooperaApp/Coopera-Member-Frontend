@@ -1,0 +1,14 @@
+.dashboard-header {
+    font-family: 'EuclidCircularA', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 38px;
+ }
+
+ .heading {
+    font-family: 'EuclidCircularA', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0em;
+    text-align: left;
+ }
