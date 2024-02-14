@@ -1,8 +1,7 @@
 import React from 'react';
-import GreenArrow from "../../assets/images/svg/Green-Arrow.svg";
 import Flower from "../../assets/images/svg/SavingsFlower.svg";
 import FlowerTwo from "../../assets/images/svg/SavingsFlower2.svg";
-import ArrowOptions from "../../assets/images/svg/Arrow-Options.svg";
+import AddVector from "../../assets/images/svg/AddVector.svg"
 
 const SavingsCard = ({totalSavings}) => {
   return (
@@ -18,30 +17,10 @@ const SavingsCard = ({totalSavings}) => {
             <p className="total-savings-amount  mb-4">{totalSavings}</p>
 
             <div className="flex mb-5">
-              <div
-                className="flex rounded h-full w-20"
-                style={{ backgroundColor: "#E7F8F0" }}
-              >
-                <img src={GreenArrow} alt="Green Arrow" />
-                <p
-                  className="percentage-figure pl-2 mt-0.5"
-                  style={{ color: "#12B76A" }}
-                >
-                  17%
-                </p>
-              </div>
-              <div className="flex items-center ml-3">
-                <div className="border flex h-6 rounded-sm w-30">
-                  <p className="previous-month-styling ml-2">
-                    vs previous month
-                  </p>
-                  <img
-                    src={ArrowOptions}
-                    alt="Arrow Options"
-                    className="w-4 h-4 ml-1 mt-1"
-                  />
-                </div>
-              </div>
+            <button id="edit-savings-large">
+            Add Savings
+            <img src={AddVector} alt=''/>
+          </button>
             </div>
           </div>
 
