@@ -2,7 +2,6 @@ import { LuSearch } from "react-icons/lu";
 import ArrowOptions from "../../assets/images/svg/Arrow-Options.svg";
 import NotificationIcon from "../../assets/images/svg/NotificationIcon.svg";
 import LMCLogo2 from "../../assets/images/svg/LMCLogo2.svg";
-import "../../styles/Tailwind.css"
 
 const TopNav = () => {
   return (
