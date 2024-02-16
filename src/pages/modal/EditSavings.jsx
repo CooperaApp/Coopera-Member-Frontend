@@ -19,13 +19,13 @@ const EditSavings = () => {
                   <form onSubmit={handleSubmit}>
 
                         <div className="mb-4">
-                        <label className="add-savings-text-label">New Savings Amount</label>
-                        <input placeholder="Input Amount" className="rounded-md bg-[#F3F3F3] w-80 h-10"/>
+                        <label className="add-savings-text-label">New Savings Amount</label><br />
+                        <input placeholder="Input Amount" className="w-full rounded-md bg-[#F3F3F3] h-10"/>
                         </div>
 
                         <div className="mb-9">
-                        <label className="add-savings-text-label">Monthly</label>
-                        <input placeholder={memberId} className="rounded-md bg-[#C5C5C5] w-80 h-10"/>
+                        <label className="add-savings-text-label">Monthly</label><br />
+                        <input placeholder={memberId} className="w-full rounded-md bg-[#C5C5C5] h-10"/>
                         </div>
 
                         <div className="bg-[#7838D6] text-white h-10 rounded-md flex justify-center items-center">

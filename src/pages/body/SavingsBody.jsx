@@ -13,7 +13,7 @@ import EditSavings from '../modal/EditSavings';
 
 const modalStyles = {
   content: {
-    width: '30%',
+    width: '38%',
     height: '60%',
     top: '50%',
     left: '50%',
