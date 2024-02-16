@@ -13,11 +13,12 @@ import * as Yup from "yup";
 
 const RegistrationPage = () => {
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false  );
+  const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     companyName: "",
     rcNumber: "",
@@ -30,7 +31,10 @@ const RegistrationPage = () => {
   const validationSchema = Yup.object().shape({
     companyName: Yup.string().required("Required"),
     rcNumber: Yup.string().required("Required"),
-    name: Yup.string()
+    firstName: Yup.string()
+      .min(3, "Name must be at least 3 characters")
+      .required("Required"),
+    lastName: Yup.string()
       .min(3, "Name must be at least 3 characters")
       .required("Required"),
     email: Yup.string().email("Invalid email address").required("Required"),
@@ -60,15 +64,7 @@ const RegistrationPage = () => {
     try {
       await validationSchema.validate(formData, { abortEarly: false });
 
-      // const {  ...dataToSend } = formData;
-      // console.log("data to send => ", dataToSend);
-      // console.log("form data => ", formData);
-
-      await axios.post(`${BASE_URL}/cooperative/register`,
-        formData,
-        // password: formData.password,
-        // ...dataToSend, d
-      );
+      await axios.post(`${BASE_URL}/member/register`, formData);
 
       notifySuccess("Registration Successful, Redirecting to login...");
       setTimeout(() => {
@@ -97,9 +93,8 @@ const RegistrationPage = () => {
   };
 
   const inputConfig = [
-    { label: "Company Name", placeholder: "Company name", name: "companyName" },
-    { label: "Company CAC No.", placeholder: "Company CAC No.", name: "rcNumber" },
-    { label: "Cooperative Name", placeholder: "Cooperative name", name: "name" },
+    { label: "First Name", placeholder: "First Name", name: "firstName" },
+    { label: "Last Name", placeholder: "Last Name", name: "lastName" },
     { label: "Email Address", placeholder: "Email Address", name: "email" },
     { label: "Password", placeholder: "Choose a password", name: "password" },
     { label: "Confirm Password", placeholder: "Enter password again", name: "confirmPassword" },
@@ -121,10 +116,10 @@ const RegistrationPage = () => {
           }}
         />
         <div className="h-40 w-96 mt-12 ml-28 ">
-          <p className="mb-5 authentication-big-font-style">
+          <p className="mb-5 authentication-big-font-style " style={{color: 'white', fontWeight: 700, fontSize: 'xx-large'}}>
             Build your Cooperative Society using Coopera
           </p>
-          <p className="authentication-small-font-style">
+          <p className="authentication-small-font-style" style={{color: 'white'}}>
             With Coopera, managing your cooperative society is seamless. Elevate
             efficiency and foster financial growth
           </p>
@@ -145,7 +140,35 @@ const RegistrationPage = () => {
         <h2 className="mb-8 get-started-big-font-style">Get Started</h2>
 
         <form onSubmit={handleFormSubmit} className="">
-          {inputConfig.map((input) => (
+          
+          <div className="flex mb-5">
+            <div className="mr-2">
+              <label className="sub-text-font-style">First Name</label>
+              <input
+                type="text"
+                className="w-full h-10 px-4 text-xs"
+                style={{ backgroundColor: "#F3F3F3", borderRadius: "4px" }}
+                placeholder="First Name"
+                onChange={handleInputChange}
+                value={formData.firstName}
+                name="firstName"
+              />
+            </div>
+            <div>
+              <label className="sub-text-font-style">Last Name</label>
+              <input
+                type="text"
+                className="w-full h-10 px-4 text-xs"
+                style={{ backgroundColor: "#F3F3F3", borderRadius: "4px" }}
+                placeholder="Last Name"
+                onChange={handleInputChange}
+                value={formData.lastName}
+                name="lastName"
+              />
+            </div>
+          </div>
+
+          {inputConfig.slice(2).map((input) => (
             <div className="mb-5" key={input.name}>
               <label className="sub-text-font-style">{input.label}</label>
               <div className="relative">
