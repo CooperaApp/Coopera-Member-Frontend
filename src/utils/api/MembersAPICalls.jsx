@@ -54,3 +54,27 @@ export const ForgetPassword = (payload) => {
             throw error;
         });
 };
+
+export const ResetPassword = (payload) => {
+    const endpoint = "/api/v1/member/resetPassword";
+    const URL = `${BASE_URL}${endpoint}`;
+
+    const headers = {
+        Authorization: `Bearer ${payload.token}`,
+    };
+
+    const requestBody = {
+        newPassword: payload.newPassword,
+        confirmPassword: payload.confirmPassword,
+        token: payload.token,
+    };
+
+    return axios
+        .post(URL, requestBody, { headers })
+        .then((response) => {
+            return response;
+        })
+        .catch((error) => {
+            throw error;
+        });
+};

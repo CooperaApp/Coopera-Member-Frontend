@@ -1,4 +1,6 @@
 export const EnumOne = {
     PENDING: 'pending',
-    APPROVED: 'approved'
+    SUCCESSFUL: 'successfull',
+    COMPLETED: 'completed'
+
   };

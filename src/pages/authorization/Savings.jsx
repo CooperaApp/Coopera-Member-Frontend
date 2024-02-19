@@ -13,8 +13,8 @@ const Savings = () => {
       </div>
 
       <div className="w-full h-full">
-        <TopNav />
-        <SavingsBody />
+      <TopNav />
+      <SavingsBody />
       </div>
     </div>
   );
