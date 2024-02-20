@@ -5,7 +5,7 @@ import AddVector from "../../assets/images/svg/AddVector.svg"
 
 const SavingsCard = ({totalSavings}) => {
   return (
-        <div className="mb-10 h-60 ml-4 mr-4 mb-7 flex bg-[#FFFFFF] rounded-lg relative">
+        <div className="mb-10 h-60 mr-4 mb-7 flex bg-[#FFFFFF] rounded-lg relative">
           <div className="absolute bottom-0 left-0">
             <img src={Flower} alt="Flower One" />
           </div>
