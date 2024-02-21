@@ -9,6 +9,7 @@ import axios from "axios";
 import { BASE_URL } from "../../utils/api/API_BASE_URL";
 import { useState, useEffect } from "react";
 import VsPreviousMonth from "./VSPreviousMonth";
+import "../../styles/Card.css";
 
 const Card = () => {
   const [totalSavings, setTotalSavings] = useState(0);
@@ -49,7 +50,7 @@ const Card = () => {
             <div className="h-32  p-0 ">
               <div className="p-0 flex justify-between mb-2">
                 <div>
-                  <p className="card-title">Account Balance</p>
+                  <p className="card-title">Savings</p>
                   <p className="mt-3 w-full card-amount">#{accountBalance}</p>
                 </div>
                 <div
@@ -59,37 +60,8 @@ const Card = () => {
                   <img src={AccountBalanceIcon} alt="No Img" />
                 </div>
               </div>
-              <div className="justify-between mt-4 flex h-7">
-                <div
-                  className="flex rounded h-full w-20"
-                  style={{ backgroundColor: "#FEECEB" }}
-                >
-                  <img src={RedArrow} alt="No Img" className="" />
-                  <p
-                    className="percentage-figure pl-2 mt-0.5"
-                    style={{ color: "#F04438" }}
-                  >
-                    17%
-                  </p>
-                </div>
-                <div className="items-center justify-center h-full flex border h-4 w-30 ml-3">
-                  <p className="previous-month-styling ml-2">
-                    vs previous month
-                  </p>
-                  <img
-                    src={ArrowOptions}
-                    alt="No Img"
-                    className="w-4 h-4 ml-1 mt-0 cursor-pointer"
-                    onClick={() => setAccountBalanceDropDown(!accountBalanceDropDown)}
-                  />
-                  {accountBalanceDropDown && (
-                    <div className="absolute w-25 mt-52 ml-40 border bg-white rounded-md max-h-48 overflow-y-auto">
-                      <ul className="list-none month-labels ml-3 p-3 cursor-pointer">
-                        <VsPreviousMonth />
-                      </ul>
-                    </div>
-                  )}
-                </div>
+              <div>
+              <button id="add-savings">Add Savings + </button>
               </div>
             </div>
           </div>
@@ -98,7 +70,7 @@ const Card = () => {
             <div className="h-32  p-0 ">
               <div className="p-0 flex justify-between mb-2">
                 <div>
-                  <p className="card-title">Total Savings</p>
+                  <p className="card-title">Total Loan</p>
                   <p className="mt-3 w-full card-amount">#{totalSavings}</p>
                 </div>
                 <div
@@ -108,37 +80,8 @@ const Card = () => {
                   <img src={TotalSavingsIcon} alt="No Img" />
                 </div>
               </div>
-              <div className="justify-between mt-4 flex h-7">
-                <div
-                  className="flex rounded h-full w-20"
-                  style={{ backgroundColor: "#E7F8F0" }}
-                >
-                  <img src={GreenArrow} alt="No Img" className="" />
-                  <p
-                    className="percentage-figure pl-2 mt-0.5"
-                    style={{ color: "#12B76A" }}
-                  >
-                    17%
-                  </p>
-                </div>
-                <div className="items-center justify-center h-full flex border h-4 w-30 ml-3">
-                  <p className="previous-month-styling ml-2">
-                    vs previous month
-                  </p>
-                  <img
-                    src={ArrowOptions}
-                    alt="No Img"
-                    className="w-4 h-4 ml-1 mt-0 cursor-pointer"
-                    onClick={() => setTotalSavingsDropDown(!totalSavingsDropDown)}
-                  />
-                  {totalSavingsDropDown && (
-                    <div className="absolute w-25 mt-52 ml-40 border bg-white rounded-md max-h-48 overflow-y-auto">
-                      <ul className="list-none month-labels ml-3 p-3 cursor-pointer">
-                        <VsPreviousMonth />
-                      </ul>
-                    </div>
-                  )}
-                </div>
+              <div>
+              <button id="add-savings">Repay Loan </button>
               </div>
             </div>
           </div>
@@ -149,7 +92,7 @@ const Card = () => {
             <div className="h-32  p-0 ">
               <div className="p-0 flex justify-between mb-2">
                 <div>
-                  <p className="card-title">Loan Disbursed</p>
+                  <p className="card-title">Total Hired Purchase Value</p>
                   <p className="mt-3 w-full card-amount">#{loanDisbursed}</p>
                 </div>
                 <div
@@ -159,37 +102,8 @@ const Card = () => {
                   <img src={LoanDisbursed} alt="No Img" />
                 </div>
               </div>
-              <div className="justify-between mt-4 flex h-7">
-                <div
-                  className="flex rounded h-full w-20"
-                  style={{ backgroundColor: "#E7F8F0" }}
-                >
-                  <img src={GreenArrow} alt="No Img" className="" />
-                  <p
-                    className="percentage-figure pl-2 mt-0.5"
-                    style={{ color: "#12B76A" }}
-                  >
-                    17%
-                  </p>
-                </div>
-                <div className="items-center justify-center h-full flex border h-4 w-30 ml-3">
-                  <p className="previous-month-styling ml-2">
-                    vs previous month
-                  </p>
-                  <img
-                    src={ArrowOptions}
-                    alt="No Img"
-                    className="w-4 h-4 ml-1 mt-0 cursor-pointer"
-                    onClick={() => setLoanDisbursedDropDown(!loanDisbursedDropDown)}
-                  />
-                  {loanDisbursedDropDown && (
-                    <div className="absolute w-25 mt-52 ml-40 border bg-white rounded-md max-h-48 overflow-y-auto">
-                      <ul className="list-none month-labels ml-3 p-3 cursor-pointer">
-                        <VsPreviousMonth />
-                      </ul>
-                    </div>
-                  )}
-                </div>
+              <div>
+              <button id="add-savings">Hired Purchase + </button>
               </div>
             </div>
           </div>
@@ -197,7 +111,7 @@ const Card = () => {
             <div className="h-32  p-0 ">
               <div className="p-0 flex justify-between mb-2">
                 <div>
-                  <p className="card-title">Loan Repaid</p>
+                  <p className="card-title">Total Withdrawal</p>
                   <p className="mt-3 w-full card-amount">#{loanRepaid}</p>
                 </div>
                 <div
@@ -207,44 +121,15 @@ const Card = () => {
                   <img src={LoanRepaid} alt="No Img" />
                 </div>
               </div>
-              <div className="justify-between mt-4 flex h-7">
-                <div
-                  className="flex rounded h-full w-20"
-                  style={{ backgroundColor: "#FEECEB" }}
-                >
-                  <img src={RedArrow} alt="No Img" className="" />
-                  <p
-                    className="percentage-figure pl-2 mt-0.5"
-                    style={{ color: "#F04438" }}
-                  >
-                    17%
-                  </p>
-                </div>
-                <div className="items-center justify-center h-full flex border h-4 w-30 ml-3">
-                  <p className="previous-month-styling ml-2">
-                    vs previous month
-                  </p>
-                  <img
-                    src={ArrowOptions}
-                    alt="No Img"
-                    className="w-4 h-4 ml-1 mt-0 cursor-pointer"
-                    onClick={() => setLoanRepaidDropDown(!loanRepaidDropDown)}
-                  />
-                  {loanRepaidDropDown && (
-                    <div className="absolute w-25 mt-52 ml-40 border bg-white rounded-md max-h-48 overflow-y-auto">
-                      <ul className="list-none month-labels ml-3 p-3 cursor-pointer">
-                        <VsPreviousMonth />
-                      </ul>
-                    </div>
-                  )}
-                </div>
+              <div>
+              <button id="add-savings">Withdrawals</button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  );
+  ); 
 };
 
 export default Card;
