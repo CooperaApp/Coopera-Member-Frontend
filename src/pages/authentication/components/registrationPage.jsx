@@ -8,7 +8,7 @@ import { notifySuccess, notifyError } from "../../../utils/functions/func.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { BASE_URL } from "../../../utils/api/API_BASE_URL.jsx";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import * as Yup from "yup";
 
 const RegistrationPage = () => {
@@ -16,34 +16,41 @@ const RegistrationPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  const { search } = useLocation();
+  const params = new URLSearchParams(search);
+  const token = params.get("token");
+
+  // console.log("Token:", token);
+
+  const { memberId, memberEmail } = JSON.parse(atob(token.split('.')[1]));
+
+  console.log("Member ID:", memberId);
+  // console.log("Member Email:", memberEmail);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    email: "",
-    companyName: "",
-    rcNumber: "",
     password: "",
-    confirmPassword: "",
+    phoneNumber: "",
+    token: token
   });
 
   const [errors, setErrors] = useState({});
 
   const validationSchema = Yup.object().shape({
-    companyName: Yup.string().required("Required"),
-    rcNumber: Yup.string().required("Required"),
     firstName: Yup.string()
       .min(3, "Name must be at least 3 characters")
       .required("Required"),
     lastName: Yup.string()
       .min(3, "Name must be at least 3 characters")
       .required("Required"),
-    email: Yup.string().email("Invalid email address").required("Required"),
     password: Yup.string()
       .min(8, "Password must be at least 8 characters")
       .required("Required"),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref("password"), null], "Passwords must match")
       .required("Required"),
+    phoneNumber: Yup.string().required("Required"),
   });
 
   const handleInputChange = (event) => {
@@ -62,9 +69,12 @@ const RegistrationPage = () => {
     event.preventDefault();
 
     try {
+      console.log('From data: ',formData);
       await validationSchema.validate(formData, { abortEarly: false });
+      const { confirmPassword, ...dataToSend } = formData;
+      console.log('data to send: ',dataToSend);
 
-      await axios.post(`${BASE_URL}/member/register`, formData);
+      await axios.post(`${BASE_URL}/member/register`, dataToSend);
 
       notifySuccess("Registration Successful, Redirecting to login...");
       setTimeout(() => {
@@ -95,7 +105,7 @@ const RegistrationPage = () => {
   const inputConfig = [
     { label: "First Name", placeholder: "First Name", name: "firstName" },
     { label: "Last Name", placeholder: "Last Name", name: "lastName" },
-    { label: "Email Address", placeholder: "Email Address", name: "email" },
+    { label: "Phone Number", placeholder: "Phone Number", name: "phoneNumber" },
     { label: "Password", placeholder: "Choose a password", name: "password" },
     { label: "Confirm Password", placeholder: "Enter password again", name: "confirmPassword" },
   ];
@@ -146,7 +156,7 @@ const RegistrationPage = () => {
               <label className="sub-text-font-style">First Name</label>
               <input
                 type="text"
-                className="w-full h-10 px-4 text-xs"
+                className="w-full h-10 px-9 text-xs "
                 style={{ backgroundColor: "#F3F3F3", borderRadius: "4px" }}
                 placeholder="First Name"
                 onChange={handleInputChange}
@@ -158,7 +168,7 @@ const RegistrationPage = () => {
               <label className="sub-text-font-style">Last Name</label>
               <input
                 type="text"
-                className="w-full h-10 px-4 text-xs"
+                className="w-full h-10 px-9 text-xs"
                 style={{ backgroundColor: "#F3F3F3", borderRadius: "4px" }}
                 placeholder="Last Name"
                 onChange={handleInputChange}
@@ -213,6 +223,7 @@ const RegistrationPage = () => {
             <button
               type="submit"
               className="hover:bg-purple-500 cursor-pointer"
+              style={{ border: "none", outline: "none" }}
             >
               Register
             </button>
