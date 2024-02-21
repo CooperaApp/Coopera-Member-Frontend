@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Savings from "./pages/authorization/Savings";
-import RegistrationPage from "./pages/authentication/components/registerationPage";
+import RegistrationPage from "./pages/authentication/components/registrationPage";
 import LoginPage from "./pages/authentication/components/loginPage";
 
 
@@ -11,7 +11,7 @@ function App() {
       <BrowserRouter>
         <Routes>
          <Route path="/" element={<Savings />} />
-          <Route path="/registration" element={<RegistrationPage/>} />
+          <Route path="/membersRegister" element={<RegistrationPage/>} />
           <Route path="/login" element={<LoginPage/>} />
           <Route path="/savings" element={<Savings />} />
         </Routes>

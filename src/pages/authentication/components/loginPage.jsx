@@ -4,7 +4,7 @@ import ArrowBack from "../../../assets/images/png/arrow-back.png";
 import CooperaLogo from "../../../assets/images/svg/CooperaLogo.svg";
 import DashboardImage from "../../../assets/images/svg/DashboardImg2.svg";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import * as Yup from "yup";
 import { notifySuccess, notifyError } from "../../../utils/functions/func";
@@ -17,6 +17,7 @@ const LoginPage = () => {
     password: "",
   });
 
+ 
   
   const [errors, setErrors] = useState({});
 
@@ -34,7 +35,7 @@ const LoginPage = () => {
       await validationSchema.validate(formData, { abortEarly: false });
 
       const response = await axios.post(
-        "http://54.234.211.52:8081/login",
+        "http://54.159.29.234:8081/login",
         formData,
       );
 
@@ -93,7 +94,7 @@ const LoginPage = () => {
           <img
             className="w-96 ml-28 -m-32"
             src={DashboardImage}
-            alt="Your Image"
+            alt="Your "
             style={{ height: "705px", width: "489px" }}
           />
         </div>
