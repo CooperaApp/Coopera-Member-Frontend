@@ -19,7 +19,7 @@ const SideBar = () => {
         <img className="w-16 h-16" src={LMCLogo} alt="LMC Logo" />
       </div>
 
-      <div className="flex-1">
+      <div className="flex-1 text-gray-700">
         {DASHBOARD_SIDE_BAR_LINKS.map((item) => (
           <SideBarLink key={item.key} item={item} />
         ))}

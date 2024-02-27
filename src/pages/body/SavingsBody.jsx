@@ -73,22 +73,10 @@ const SavingsBody = () => {
         <div className="border p-5 bg-white mt-7 rounded-md mr-4 w-12/12 h-96">
         <div className="mb-5 flex w-full justify-between h-8">
           <div>
-            <p className="heading">Recent Activities</p>
+            <p className="heading">Savings History</p>
           </div>
 
-          <div className="flex justify-between">
-            <div className=" relative flex items-center text-gray-200 focus-within:text-gray-400">
-              <LuSearch className="w-5 h-5 absolute ml-3 pointer-events-none" />
-              <input
-                type="text"
-                name="search"
-                placeholder="       Search members..."
-                autoComplete="off"
-                aria-label="Search"
-                className="search-bar  pr-3 pl-10 py-2 font-normal text-sm h-8 w-44 placeholder-gray-600  rounded-sm border-none ring-2 ring-gray-100 focus:ring-gray-500 focus:ring-2"
-                style={{ backgroundColor: "#FFFFFF" }}
-              />
-            </div>
+          <div className="flex border">
             <div className="border items-center justify-center flex ml-3 h-7 w-20 mt-0.5 rounded-sm">
               <p className="font-normal text-sm ">Filter</p>
               <img
@@ -96,7 +84,12 @@ const SavingsBody = () => {
                 alt="No Img"
                 className="w-4 h-4 ml-2 mt-0"
               />
+            </div>
 
+            <div>
+            <button id="view-savings-history" >
+            + View Savings History
+          </button>
             </div>
           </div>
         </div>
