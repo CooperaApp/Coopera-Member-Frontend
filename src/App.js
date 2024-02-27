@@ -5,7 +5,7 @@ import RegistrationPage from "./pages/authentication/components/registrationPage
 import LoginPage from "./pages/authentication/components/loginPage";
 import PasswordReset from "./pages/authorization/components/ResetPassword";
 import Dashboard from "./pages/authorization/components/Dashboard";
-
+import "../src/styles/Tailwind.css";
 
 function App() {
   return (

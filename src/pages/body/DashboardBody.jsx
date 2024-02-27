@@ -1,5 +1,6 @@
 import React from 'react';
 import PieChart from "../molecule/PieChart";
+import "../../styles/Dashboard.css";
 import Filter from "../../assets/images/svg/Filter.svg";
 import { LuSearch } from "react-icons/lu";
 import Card from '../molecule/Card';
@@ -40,13 +41,16 @@ const DashboardBody = () => {
       <div className="w-full flex mt-2 mb-2 flex-shrink-0 justify-between w-5/6">
         <div className="dashboard-header">Dashboard Overview</div>
 
+        <div className='mr-8'>
         <CustomDatePicker onSelectDate={handleSelectDate} />
+        </div>
       </div>
 
-      <div className="w-full h-80 flex flex-row flex-shrink-0">
+      <div className="h-90 flex flex-row flex-shrink-0 mr-4">
         <Card />
         <PieChart />
       </div>
+
 
       <div className="border p-5 bg-white mt-7 rounded-md mr-4 w-12/12 ">
         <div className="mb-5 flex w-full justify-between h-8">

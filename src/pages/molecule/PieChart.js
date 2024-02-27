@@ -3,15 +3,17 @@ import { options, data } from "../../utils/constant/ChartData";
 import { Doughnut } from "react-chartjs-2";
 import ArrowOptions from "../../assets/images/svg/Arrow-Options.svg";
 import Month from "./Month";
+import "../../styles/PieChart.css";
+
 
 const PieChart = () => {
   const [dropDown, setDropDown] = useState(false);
 
   return (
-    <div className="border bg-white rounded-md w-6/12 h-full mr-4">
+    <div className="border w-1/2 bg-white rounded-md h-full">
       <div className="p-3 -mt-2">
         <div className="justify-between pt-2 flex flex-row">
-          <p className="cooperative-overview">Cooperative Overview</p>
+          <p className="account-overview">Account Overview</p>
           <div className="border flex relative">
             <p className="previous-month-styling ml-2">Monthly</p>
             <img
@@ -34,40 +36,43 @@ const PieChart = () => {
           <Doughnut data={data} options={options} />
         </div>
 
-        <div className="">
-          <div className="flex space-x-4">
-            <div className="flex">
+        <div className="flex flex-row justify-between mt-2">
+          <div className="flex flex-col space-y-1">
+            <div className="flex ">
               <div
                 className="w-2 h-2 rounded-full mt-2 mr-1"
                 style={{ backgroundColor: "#0079FF" }}
               ></div>
-              <span className="pie-chart-labels">Loans</span>
+              <span className="pie-chart-labels">Savings Balance</span>
             </div>
 
-            <div className="flex">
-              <div
-                className="w-2 h-2 rounded-full mt-2 mr-1"
-                style={{ backgroundColor: "#FF6A24" }}
-              ></div>
-              <span className="pie-chart-labels">Savings</span>
-            </div>
-          </div>
-
-          <div className="flex space-x-4">
             <div className="flex">
               <div
                 className="w-2 h-2 rounded-full mt-2 mr-1"
                 style={{ backgroundColor: "#0EBE8D" }}
               ></div>
-              <span className="pie-chart-labels">Hire Purchase</span>
+              <span className="pie-chart-labels">Total Hire Purchase Value</span>
             </div>
+
+          </div>
+
+          <div className="flex flex-col space-y-1 mr-5">
+
+          <div className="flex">
+              <div
+                className="w-2 h-2 rounded-full mt-2 mr-1"
+                style={{ backgroundColor: "#FF6A24" }}
+              ></div>
+              <span className="pie-chart-labels">Loan Balance</span>
+            </div>
+            
 
             <div className="flex">
               <div
                 className="w-2 h-2 rounded-full mt-2 mr-1"
                 style={{ backgroundColor: "#7838D6" }}
               ></div>
-              <span className="pie-chart-labels">Withdraw</span>
+              <span className="pie-chart-labels">Withdraw Balance</span>
             </div>
           </div>
         </div>

@@ -34,7 +34,7 @@ export default function CustomDatePicker({ onSelectDate }) {
   };
 
   return (
-    <div className="border bg-white rounded-md mt-1 w-28 mr-4 h-6">
+    <div className="border bg-white rounded-md mt-1 w-28 h-6 ">
       <label>
         <DatePicker
           selected={selectedDate}

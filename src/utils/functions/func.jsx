@@ -46,3 +46,41 @@ export const notifyError = (arg) => {
         theme: "colored",
     });
 };
+
+export function formatNumberWithCommasAndDecimal(number, decimalPlaces) {
+    // Ensure the input is a valid number
+    if (isNaN(number)) {
+      return "Invalid number";
+    }
+  
+    // Use toLocaleString to add commas
+    let formattedNumber = number.toLocaleString();
+  
+    // Check if decimalPlaces is a valid number
+    if (!isNaN(decimalPlaces) && decimalPlaces >= 0) {
+      // Use toFixed to control decimal places
+      formattedNumber = Number(number).toFixed(decimalPlaces);
+    }
+  
+    return formattedNumber;
+  }
+  
+  
+  export function formatNumberWithCommasAndDecimal2(number, decimalPlaces) {
+    // Ensure the input is a valid number
+    if (isNaN(number)) {
+      return "Invalid number";
+    }
+  
+    // Format number with commas and control decimal places
+    const formattedNumber = number.toLocaleString(undefined, {
+      minimumFractionDigits: decimalPlaces,
+      maximumFractionDigits: decimalPlaces
+    });
+  
+    return formattedNumber;
+  }
+  
+ 
+  
+  
