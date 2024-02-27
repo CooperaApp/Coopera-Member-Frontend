@@ -14,11 +14,11 @@ const SavingsCard = ({totalSavings}) => {
             <p className="total-savings font-semibold text-xl mb-3">
               Total Savings
             </p>
-            <p className="total-savings-amount  mb-4">{totalSavings}</p>
+            <p className="total-savings-amount  mb-4">₦{totalSavings}</p>
 
             <div className="flex mb-5">
             <button id="edit-savings-large">
-            Add Savings
+            + Add Savings
             <img src={AddVector} alt=''/>
           </button>
             </div>

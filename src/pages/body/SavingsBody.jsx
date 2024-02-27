@@ -43,16 +43,15 @@ const SavingsBody = () => {
 
   return (
     <div className='ml-4 mt-2 overflow-y-hidden h-full'>
-        <div className='flex flex-row mb-2'>
+        <div className='flex flex-row mb-2 mr-5 justify-between'>
 
         <div className='savings-tag'>Savings</div>
         <div className="flex flex-row justify-between ml-60 ">
-          <button id="add-savings" onClick={() => setAddSavingsModal(true)}>
-            Add Savings
-            <img src={AddVector} alt=''/>
+          <button id="add-savings-top" onClick={() => setAddSavingsModal(true)}>
+            + Add Savings
           </button>
         
-          <button id="edit-savings" onClick={() => setEditSavingsModal(true)}>Edit Savings</button>
+          <button id="edit-savings-top" onClick={() => setEditSavingsModal(true)}>Edit Savings Plan</button>
         </div>
         {addSavingsModal && (
             <Modal isOpen={addSavingsModal} onRequestClose={closeAddSavingsModal} style={modalStyles}>

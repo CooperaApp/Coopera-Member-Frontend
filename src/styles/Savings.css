@@ -1,8 +1,40 @@
 .savings-tag{
     font-family: 'EuclidCircularA', sans-serif;
     font-weight: 600;
-    font-size: 25px;
+    font-size: 23px;
     line-height: 38px;
+}
+#add-savings-top {
+    margin-top: 6px;
+    font-weight: normal;
+    font-size: 11px;
+    font-family: sans-serif;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: #7C39DE;
+    color: #F8F8F9;
+    width: 100px;
+    height: 28px;
+    display: flex;
+    margin-left: 600px;
+}
+
+#edit-savings-top {
+    margin-top: 6px;
+    font-weight: normal;
+    font-size: 11px;
+    font-family: sans-serif;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    border: 1px solid #7C39DE;
+    background-color: white;
+    color: #7C39DE;
+    width: 100px;
+    height: 28px;
+    display: flex;
+    margin-left: 20px;
 }
 
 #add-savings{
@@ -50,7 +82,7 @@
 #edit-savings-large {
     margin-top: 6px;
     font-weight: normal;
-    font-size: 11px;
+    font-size: 15px;
     font-family: sans-serif;
     align-items: center;
     justify-content: center;
@@ -59,7 +91,7 @@
     background-color: white;
     color: #7C39DE;
     width: 220px;
-    height: 45px;
+    height: 40px;
     display: flex;
     margin-left: 20px;
 }

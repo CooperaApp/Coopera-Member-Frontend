@@ -16,7 +16,7 @@ import {
   BarElement,
 } from "chart.js";
 
-import Table from "../tables/Table";
+import Table from "../tables/DashboardTable";
 import CustomDatePicker from "../molecule/CustomDatePicker";
 
 ChartJS.register(
