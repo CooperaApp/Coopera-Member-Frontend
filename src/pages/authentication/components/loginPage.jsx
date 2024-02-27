@@ -82,10 +82,10 @@ const LoginPage = () => {
           />
         </div>
         <div className="h-40 w-96 mt-12 ml-28 ">
-          <p className="mb-5 authentication-big-font-style">
+          <p className="mb-5 authentication-big-font-style" style={{color: 'white', fontWeight: 700, fontSize: 'xx-large'}}>
             Build your Cooperative Society using Coopera
           </p>
-          <p className="authentication-small-font-style">
+          <p className="authentication-small-font-style" style={{color: 'white'}}>
             With Coopera, managing your cooperative society is seamless. Elevate
             efficiency and foster financial growth
           </p>
@@ -102,7 +102,7 @@ const LoginPage = () => {
 
       <div className="w-1/2 p-10 pt-1 mt-32">
         <img src={CooperaLogo} alt="Logo" className="h-9 w-9 mb-2 -mt-5" />
-        <h2 className="welcome-back-big-font-style mb-7">Welcome back!</h2>
+        <h2 className="welcome-back-big-font-style mb-7" style={{ fontWeight: 700, fontSize: 'xx-large'}}>Welcome Back!</h2>
         <form onSubmit={handleFormSubmit}>
           <div className="mb-5">
             <label className="sub-text-font-style">Email Address</label>
@@ -158,13 +158,15 @@ const LoginPage = () => {
           </div>
         </form>
 
-        <div className="flex shrink-0 items-center justify-center mb-2">
-          <p className="account-does-not-exist-font-style">
-            Dont have an account?{" "}
+        <div className="flex shrink-0 items-center justify-center mb-2 ">
+          <p className="account-does-not-exist-font-style mr-1"  style={{color:'grey'}}>
+            Dont have an account? 
           </p>
           <a
-            className="account-does-not-exist-register-style"
+            className="account-does-not-exist-register-style "
             href="/registration"
+            style={{color:'#7C39DE',fontWeight: 'bold'}}
+           
           >
             Register
           </a>

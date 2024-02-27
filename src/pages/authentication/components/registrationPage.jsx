@@ -129,7 +129,7 @@ const RegistrationPage = () => {
           <p className="mb-5 authentication-big-font-style " style={{color: 'white', fontWeight: 700, fontSize: 'xx-large'}}>
             Build your Cooperative Society using Coopera
           </p>
-          <p className="authentication-small-font-style" style={{color: 'white'}}>
+          <p className="authentication-small-font-style " style={{color: 'white'}}>
             With Coopera, managing your cooperative society is seamless. Elevate
             efficiency and foster financial growth
           </p>
@@ -147,7 +147,8 @@ const RegistrationPage = () => {
 
       <div className="h-full w-1/2 p-10 pt-20 overflow-y-auto">
         <img src={CooperaLogo} alt="Logo" className="h-9 w-9 mb-2 -mt-5" />
-        <h2 className="mb-8 get-started-big-font-style">Get Started</h2>
+        <h2 className="mb-1 get-started-big-font-style" style={{ fontWeight: 700, fontSize: 'xx-large'}}>Get Started</h2>
+        <p className="mb-8">Join Other Coperative Members On Coopera</p>
 
         <form onSubmit={handleFormSubmit} className="">
           
@@ -232,10 +233,10 @@ const RegistrationPage = () => {
         </form>
 
         <div className="flex items-center justify-center mb-2">
-          <p className="account-exists-font-style">
+          <p className="account-exists-font-style mr-1" style={{color:'grey'}} >
             Already have an account?{" "}
           </p>
-          <a className="account-exists-login-style" href="/login">
+          <a className="account-exists-login-style" href="/login" style={{color:'#7C39DE',fontWeight: 'bold'}}>
             Login
           </a>
         </div>
