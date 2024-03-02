@@ -35,13 +35,13 @@ const LoginPage = () => {
       await validationSchema.validate(formData, { abortEarly: false });
 
       const response = await axios.post(
-        "http://54.159.29.234:8081/login",
+        "http://3.95.5.163:8081/login",
         formData,
       );
 
       const access_token = response.data.access_token;
       sessionStorage.setItem("token", access_token);
-      // localStorage.setItem("token", access_token);
+      console.log(access_token);
 
       notifySuccess("Login successful");
       setTimeout(() => {
@@ -149,7 +149,7 @@ const LoginPage = () => {
             {errors.password && (
               <div className="text-red-500 text-xs mt-1">{errors.password}</div>
             )}
-            <a href="/forgot-password" className="forgotten-password-link">Forgotten Password?</a>
+            <a href="/forgot-password" className="forgotten-password-link " style={{color:'red', marginLeft: '28.1rem'}}>Forgotten Password?</a>
           </div>
 
           <div className="w-full h-10 px-4 rounded-md mb-2 bg-[#7C39DE] hover:bg-purple-500 hover:border-purple-500 cursor-pointer border-2 border-[#7C39DE] text-white flex items-center justify-center font-bold">
