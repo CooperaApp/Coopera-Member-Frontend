@@ -1,9 +1,11 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import PieChart from "../molecule/PieChart";
 import "../../styles/Dashboard.css";
 import Filter from "../../assets/images/svg/Filter.svg";
 import { LuSearch } from "react-icons/lu";
 import Card from '../molecule/Card';
+import { GetDasboardStatisticsForMember } from '../../utils/api/APICalls';
 import {
   Chart as ChartJS,
   ArcElement,
@@ -34,7 +36,17 @@ const handleSelectDate = (date) => {
   console.log("Selected date:", date);
 };
 
+
 const DashboardBody = () => {
+
+  const [statistics, setStatistics] = useState(null);
+
+  useEffect(() => {
+   const response =  GetDasboardStatisticsForMember();
+   setStatistics(response);
+  }, []);
+
+
   return (
 
     <div className="h-full ml-4 overflow-y-hidden">

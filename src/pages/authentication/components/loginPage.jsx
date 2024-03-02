@@ -34,19 +34,13 @@ const LoginPage = () => {
     try {
       await validationSchema.validate(formData, { abortEarly: false });
 
-      const response = await axios.post(
-        "http://54.159.29.234:8081/login",
-        formData,
-      );
-
+      const response = await axios.post("http://3.95.5.163:8081/login", formData);
+      console.log("response => ", response)
       const access_token = response.data.access_token;
       sessionStorage.setItem("token", access_token);
-      // localStorage.setItem("token", access_token);
 
       notifySuccess("Login successful");
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 5000);
+      setTimeout(() => {navigate("/dashboard")}, 5000);
 
     } catch (error) {
       console.error("Login failed", error.response);

@@ -36,6 +36,7 @@ const Card = () => {
     getDashboardStatistics();
   }, []);
 
+  
   return (
     <div className="h-full flex-col w-2/3 mr-5">
       <div className="w-full">

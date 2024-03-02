@@ -8,7 +8,7 @@ import { notifySuccess, notifyError } from "../../../utils/functions/func.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { BASE_URL } from "../../../utils/api/API_BASE_URL.jsx";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
 const RegistrationPage = () => {
@@ -16,23 +16,12 @@ const RegistrationPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const { search } = useLocation();
-  const params = new URLSearchParams(search);
-  const token = params.get("token");
-
-  // console.log("Token:", token);
-
-  const { memberId, memberEmail } = JSON.parse(atob(token.split('.')[1]));
-
-  console.log("Member ID:", memberId);
-  // console.log("Member Email:", memberEmail);
-
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     password: "",
     phoneNumber: "",
-    token: token
+    token: ""
   });
 
   const [errors, setErrors] = useState({});
@@ -65,35 +54,51 @@ const RegistrationPage = () => {
     });
   };
 
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+  
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get("token");
+    console.log("Token:", token);
+    formData.token = token;
+  
     try {
-      console.log('From data: ',formData);
-      await validationSchema.validate(formData, { abortEarly: false });
-      const { confirmPassword, ...dataToSend } = formData;
-      console.log('data to send: ',dataToSend);
 
-      await axios.post(`${BASE_URL}/member/register`, dataToSend);
 
+      console.log('From data: ', formData);
+  await validationSchema.validate(formData, { abortEarly: false });
+
+  console.log("the endpoint => ", `${BASE_URL}/member/register`);
+  const { confirmPassword, ...dataToSend } = formData;
+  console.log('data to send: ', dataToSend);
+
+  const res = await axios.post(`${BASE_URL}/member/register`, dataToSend);
+  console.log('Response:', res);
+  
       notifySuccess("Registration Successful, Redirecting to login...");
       setTimeout(() => {
-        navigate("/login");
+        navigate("/membersLogin");
       }, 3000);
     } catch (error) {
-      if (error instanceof Yup.ValidationError) {
-        const newErrors = {};
-        error.inner.forEach((validationError) => {
-          newErrors[validationError.path] = validationError.message;
-        });
-        setErrors(newErrors);
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          console.log("error.response.status => ", error.response.status);
+          console.log("error => ", error);
+          notifyError(error.response.data.message);
+        } else if (error.request) {
+          notifyError("No response received from the server");
+        } else {
+          notifyError(`Error setting up the request: ${error.message}`);
+        }
       } else {
-        console.error(error);
+        // Non-Axios error
+        console.error("Non-Axios error:", error.message);
         notifyError("An error occurred");
       }
     }
   };
-
+  
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
