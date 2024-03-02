@@ -78,8 +78,8 @@ const ForgotPassword = () => {
                         className="w-96 ml-28 -m-32"
                         src={DashboardImage}
                         alt="Your Image"
-                        style={{ height: "705px", width: "789px", marginTop: "10px" }}
-                        // style={{ height: "705px", width: "489px" }}
+                        // style={{ height: "705px", width: "789px", marginTop: "10px" }}
+                        style={{ height: "705px", width: "489px" }}
                     />
                 </div>
             </div>
