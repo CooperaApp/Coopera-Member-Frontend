@@ -19,31 +19,27 @@ const RegistrationPage = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    email: "",
-    companyName: "",
-    rcNumber: "",
     password: "",
-    confirmPassword: "",
+    phoneNumber: "",
+    token: ""
   });
 
   const [errors, setErrors] = useState({});
 
   const validationSchema = Yup.object().shape({
-    companyName: Yup.string().required("Required"),
-    rcNumber: Yup.string().required("Required"),
     firstName: Yup.string()
       .min(3, "Name must be at least 3 characters")
       .required("Required"),
     lastName: Yup.string()
       .min(3, "Name must be at least 3 characters")
       .required("Required"),
-    email: Yup.string().email("Invalid email address").required("Required"),
     password: Yup.string()
       .min(8, "Password must be at least 8 characters")
       .required("Required"),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref("password"), null], "Passwords must match")
       .required("Required"),
+    phoneNumber: Yup.string().required("Required"),
   });
 
   const handleInputChange = (event) => {
@@ -58,32 +54,51 @@ const RegistrationPage = () => {
     });
   };
 
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+  
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get("token");
+    console.log("Token:", token);
+    formData.token = token;
+  
     try {
-      await validationSchema.validate(formData, { abortEarly: false });
 
-      await axios.post(`${BASE_URL}/member/register`, formData);
 
+      console.log('From data: ', formData);
+  await validationSchema.validate(formData, { abortEarly: false });
+
+  console.log("the endpoint => ", `${BASE_URL}/member/register`);
+  const { confirmPassword, ...dataToSend } = formData;
+  console.log('data to send: ', dataToSend);
+
+  const res = await axios.post(`${BASE_URL}/member/register`, dataToSend);
+  console.log('Response:', res);
+  
       notifySuccess("Registration Successful, Redirecting to login...");
       setTimeout(() => {
-        navigate("/login");
+        navigate("/membersLogin");
       }, 3000);
     } catch (error) {
-      if (error instanceof Yup.ValidationError) {
-        const newErrors = {};
-        error.inner.forEach((validationError) => {
-          newErrors[validationError.path] = validationError.message;
-        });
-        setErrors(newErrors);
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          console.log("error.response.status => ", error.response.status);
+          console.log("error => ", error);
+          notifyError(error.response.data.message);
+        } else if (error.request) {
+          notifyError("No response received from the server");
+        } else {
+          notifyError(`Error setting up the request: ${error.message}`);
+        }
       } else {
-        console.error(error);
+        // Non-Axios error
+        console.error("Non-Axios error:", error.message);
         notifyError("An error occurred");
       }
     }
   };
-
+  
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -95,7 +110,7 @@ const RegistrationPage = () => {
   const inputConfig = [
     { label: "First Name", placeholder: "First Name", name: "firstName" },
     { label: "Last Name", placeholder: "Last Name", name: "lastName" },
-    { label: "Email Address", placeholder: "Email Address", name: "email" },
+    { label: "Phone Number", placeholder: "Phone Number", name: "phoneNumber" },
     { label: "Password", placeholder: "Choose a password", name: "password" },
     { label: "Confirm Password", placeholder: "Enter password again", name: "confirmPassword" },
   ];
@@ -119,7 +134,7 @@ const RegistrationPage = () => {
           <p className="mb-5 authentication-big-font-style " style={{color: 'white', fontWeight: 700, fontSize: 'xx-large'}}>
             Build your Cooperative Society using Coopera
           </p>
-          <p className="authentication-small-font-style" style={{color: 'white'}}>
+          <p className="authentication-small-font-style " style={{color: 'white'}}>
             With Coopera, managing your cooperative society is seamless. Elevate
             efficiency and foster financial growth
           </p>
@@ -137,7 +152,8 @@ const RegistrationPage = () => {
 
       <div className="h-full w-1/2 p-10 pt-20 overflow-y-auto">
         <img src={CooperaLogo} alt="Logo" className="h-9 w-9 mb-2 -mt-5" />
-        <h2 className="mb-8 get-started-big-font-style">Get Started</h2>
+        <h2 className="mb-1 get-started-big-font-style" style={{ fontWeight: 700, fontSize: 'xx-large'}}>Get Started</h2>
+        <p className="mb-8">Join Other Coperative Members On Coopera</p>
 
         <form onSubmit={handleFormSubmit} className="">
           
@@ -146,7 +162,7 @@ const RegistrationPage = () => {
               <label className="sub-text-font-style">First Name</label>
               <input
                 type="text"
-                className="w-full h-10 px-4 text-xs"
+                className="w-full h-10 px-9 text-xs "
                 style={{ backgroundColor: "#F3F3F3", borderRadius: "4px" }}
                 placeholder="First Name"
                 onChange={handleInputChange}
@@ -158,7 +174,7 @@ const RegistrationPage = () => {
               <label className="sub-text-font-style">Last Name</label>
               <input
                 type="text"
-                className="w-full h-10 px-4 text-xs"
+                className="w-full h-10 px-9 text-xs"
                 style={{ backgroundColor: "#F3F3F3", borderRadius: "4px" }}
                 placeholder="Last Name"
                 onChange={handleInputChange}
@@ -213,6 +229,7 @@ const RegistrationPage = () => {
             <button
               type="submit"
               className="hover:bg-purple-500 cursor-pointer"
+              style={{ border: "none", outline: "none" }}
             >
               Register
             </button>
@@ -221,10 +238,10 @@ const RegistrationPage = () => {
         </form>
 
         <div className="flex items-center justify-center mb-2">
-          <p className="account-exists-font-style">
+          <p className="account-exists-font-style mr-1" style={{color:'grey'}} >
             Already have an account?{" "}
           </p>
-          <a className="account-exists-login-style" href="/login">
+          <a className="account-exists-login-style" href="/login" style={{color:'#7C39DE',fontWeight: 'bold'}}>
             Login
           </a>
         </div>

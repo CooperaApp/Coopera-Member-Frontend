@@ -1,4 +1,4 @@
-import { BASE_URL } from "./BaseUrl";
+import { BASE_URL } from "./API_BASE_URL";
 import axios from "axios";
 
 
@@ -46,5 +46,24 @@ export const AddMemberSavings = (payload) => {
         throw error;
       });
   };
+
   
+  export const GetDasboardStatisticsForMember = () => {
+    const endpoint = "/member/getMemberDashboardStatistic";
+    const URL = `${BASE_URL}${endpoint}`;
   
+    const token = sessionStorage.getItem("token");
+
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+
+    return axios
+      .post(URL, { headers })
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
