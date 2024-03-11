@@ -2,20 +2,17 @@ import { BASE_URL } from "./API_BASE_URL";
 import axios from "axios";
 
 
-export const AddMemberSavings = (payload) => {
+export const AddMemberSavings = (amountToSave, headers ) => {
     const endpoint = "/savings/save";
     const URL = `${BASE_URL}${endpoint}`;
   
-    const headers = {
-      Authorization: `Bearer ${payload.token}`,
-    };
   
     const requestBody = {
-        amountToSave: payload.amountToSave,
+        amountToSave: amountToSave,
     };
   
     return axios
-      .post(URL, requestBody, { headers })
+      .post(URL, requestBody, {headers})
       .then((response) => {
         return response;
       })
@@ -59,7 +56,7 @@ export const AddMemberSavings = (payload) => {
     };
 
     return axios
-      .post(URL, { headers })
+      .get(URL, { headers })
       .then((response) => {
         return response;
       })

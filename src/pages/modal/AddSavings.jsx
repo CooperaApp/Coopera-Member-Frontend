@@ -1,6 +1,7 @@
 import CancelIcon from "../../assets/images/svg/Cancel-Icon.svg";
 import { AddMemberSavings } from "../../utils/api/APICalls";
 import { useState } from "react";
+import axiosInstance from "../../utils/axios-config";
 
 const AddSavings = () => {
   const [amountToSave, setAmountToSave] = useState();
@@ -8,14 +9,29 @@ const AddSavings = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const urlParams = new URLSearchParams(window.location.search);
-      const token = urlParams.get("token");
 
-      const res = await AddMemberSavings({ amountToSave, token });
+    const token = sessionStorage.getItem("token");
+    console.log("token ----  ", token);
+
+    const activityLog = {
+      activityName: "Savings",
+      memberEmail: "pugnibakko@gufum.com",
+      amount: "1500",
+    };
+    
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      activityLog: JSON.stringify(activityLog),
+    };
+
+    try {
+      console.log("Inside try")
+      const res = await AddMemberSavings(amountToSave, headers);
+      console.log("Returned response === ", res)
 
       if (res.status >= 200 && res.status < 300) {
         console.log("Success");
+        console.log("Res.data", res.data);
       } else {
         console.log("Invalid");
       }
@@ -23,6 +39,21 @@ const AddSavings = () => {
       console.log("Failed");
     }
   };
+
+
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+    // axiosInstance.post('/savings/save', {
+    //   amountToSave: amountToSave,
+    // })
+    //   .then((response) => {
+    //     console.log('Data received:', response.data);
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error fetching data:', error);
+    //   });
+  // };
+
 
   return (
     <div className="p-5">

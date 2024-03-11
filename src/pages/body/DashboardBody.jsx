@@ -6,6 +6,7 @@ import Filter from "../../assets/images/svg/Filter.svg";
 import { LuSearch } from "react-icons/lu";
 import Card from '../molecule/Card';
 import { GetDasboardStatisticsForMember } from '../../utils/api/APICalls';
+import axiosInstance from '../../utils/axios-config';
 import {
   Chart as ChartJS,
   ArcElement,
@@ -39,12 +40,33 @@ const handleSelectDate = (date) => {
 
 const DashboardBody = () => {
 
-  const [statistics, setStatistics] = useState(null);
+  const [statistics, setStatistics] = useState({});
 
   useEffect(() => {
-   const response =  GetDasboardStatisticsForMember();
-   setStatistics(response);
+    axiosInstance.get('/member/getMemberDashboardStatistic')
+      .then((response) => {
+        setStatistics(response.data)
+        console.log('Data received:', response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+
+
+      // const fetchData = async () => {
+    //   try {
+        // const response = await GetDasboardStatisticsForMember();
+    //     console.log("Statistics Response == ", response.data);
+    //     setStatistics(response);
+    //   } catch (error) {
+    //     console.error("Error fetching dashboard statistics:", error);
+    //     // Handle the error, e.g., show an error message to the user
+    //   }
+    // };
+  
+    // fetchData();
   }, []);
+  
 
 
   return (
@@ -59,7 +81,7 @@ const DashboardBody = () => {
       </div>
 
       <div className="h-90 flex flex-row flex-shrink-0 mr-4">
-        <Card />
+        <Card statistics={statistics}/>
         <PieChart />
       </div>
 

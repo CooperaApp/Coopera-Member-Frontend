@@ -64,17 +64,15 @@ const RegistrationPage = () => {
     formData.token = token;
   
     try {
-
-
       console.log('From data: ', formData);
-  await validationSchema.validate(formData, { abortEarly: false });
+      await validationSchema.validate(formData, { abortEarly: false });
 
-  console.log("the endpoint => ", `${BASE_URL}/member/register`);
-  const { confirmPassword, ...dataToSend } = formData;
-  console.log('data to send: ', dataToSend);
+      console.log("the endpoint => ", `${BASE_URL}/member/register`);
+      const { confirmPassword, ...dataToSend } = formData;
+      console.log('data to send: ', dataToSend);
 
-  const res = await axios.post(`${BASE_URL}/member/register`, dataToSend);
-  console.log('Response:', res);
+      const res = await axios.post(`${BASE_URL}/member/register`, dataToSend);
+      console.log('Response:', res);
   
       notifySuccess("Registration Successful, Redirecting to login...");
       setTimeout(() => {
