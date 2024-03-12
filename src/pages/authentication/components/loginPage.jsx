@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import EyeIcon from "../../../assets/images/svg/EyeIcon.svg";
 import ArrowBack from "../../../assets/images/png/arrow-back.png";
 import CooperaLogo from "../../../assets/images/svg/CooperaLogo.svg";
@@ -8,6 +8,7 @@ import { useNavigate} from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import * as Yup from "yup";
 import { notifySuccess, notifyError } from "../../../utils/functions/func";
+import Loader from "../../../assets/images/svg/Loader.svg"
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -17,9 +18,19 @@ const LoginPage = () => {
     password: "",
   });
 
- 
-  
+
+  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    if (loading) {
+      const timer = setTimeout(() => {
+        navigate("/dashboard");
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [loading, navigate]);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -30,6 +41,7 @@ const LoginPage = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       await validationSchema.validate(formData, { abortEarly: false });
@@ -40,11 +52,12 @@ const LoginPage = () => {
       sessionStorage.setItem("token", access_token);
 
       notifySuccess("Login successful");
-      setTimeout(() => {navigate("/dashboard")}, 5000);
-
     } catch (error) {
       console.error("Login failed", error.response);
+
       notifyError("Invalid email or password");
+    } finally {
+      setLoading(false); // Stop loading when login process completes
     }
   };
 
@@ -154,18 +167,22 @@ const LoginPage = () => {
 
         <div className="flex shrink-0 items-center justify-center mb-2 ">
           <p className="account-does-not-exist-font-style mr-1"  style={{color:'grey'}}>
-            Dont have an account? 
+            Dont have an account?
           </p>
           <a
             className="account-does-not-exist-register-style "
             href="/registration"
             style={{color:'#7C39DE',fontWeight: 'bold'}}
-           
           >
             Register
           </a>
         </div>
       </div>
+      {loading && (
+          <div className="loader-frame">
+            <img src={Loader} alt={Loader}/>
+          </div>
+      )}
     </div>
   );
 };

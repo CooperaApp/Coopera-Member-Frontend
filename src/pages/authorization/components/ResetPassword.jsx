@@ -105,7 +105,7 @@ const PasswordReset = () => {
                         efficiency and foster financial growth
                     </p>
                 </div>
-                <div className="mt-3 mr-3">
+                <div className="mt-10 transition-all duration-300 rounded-lg blur-sm hover:blur-none">
                     <img
                         className="w-96 ml-28 -m-32"
                         src={DashboardImage}
