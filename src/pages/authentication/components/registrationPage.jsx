@@ -239,7 +239,7 @@ const RegistrationPage = () => {
           <p className="account-exists-font-style mr-1" style={{color:'grey'}} >
             Already have an account?{" "}
           </p>
-          <a className="account-exists-login-style" href="/login" style={{color:'#7C39DE',fontWeight: 'bold'}}>
+          <a className="account-exists-login-style" href="/memberslogin" style={{color:'#7C39DE',fontWeight: 'bold'}}>
             Login
           </a>
         </div>
