@@ -70,7 +70,7 @@ const LoginPage = () => {
     password: Yup.string().required("Required"),
   });
 
-
+ 
   return (
     <div className="flex h-screen pt-0 overflow-hidden">
       <div className="border border-purple-100 w-1/2 bg-[#7C39DE] overflow-hidden">
